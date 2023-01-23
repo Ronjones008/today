@@ -1,0 +1,98 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:h="http://java.sun.com/jsf/html">
+<h:head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+<title>Insert title here</title>
+<link rel="stylesheet" type="text/css" href="style.css" />
+<meta charset="utf-8" >
+</meta>
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+</meta>
+<title>Data Tables</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+</meta>
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+</link>
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>
+<link rel="stylesheet" href="style.css">
+</link>
+<link href="css/bootstrap.min.css" rel="stylesheet"/>
+  <link href="css/bootstrap-icons.css" rel="stylesheet"/>
+ <link href="css/templatemo-kind-heart-charity.css" rel="stylesheet"/>
+<script
+         src="http://code.jquery.com/jquery-3.3.1.min.js"
+         integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+         crossorigin="anonymous"></script>
+<link rel="stylesheet" href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.min.css">
+</link>
+<script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js" ></script>
+
+<style>
+
+  h1{
+          text-align: center;}
+     .col-75 {
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  width: 200px;
+  margin-top: 6px;
+  margin-left: 50px;
+
+ 
+
+}
+          .container1{
+
+ 
+
+          text-align:center;
+          border-radius: 5px;
+  background-color: #f2f2f2;
+  padding: 20px;
+  margin-left:400px;
+  margin-right: 400px;
+   }
+</style>
+</h:head>
+<h:body>
+
+<h:form class="container1">
+<h2 style="text-align: center">Update Your Stock</h2>
+<hr/>
+Stock Id :
+<h:inputText class="col-75" id="stockid"  value="#{param['id']}" readonly="true"/><br/>
+Item Name :
+<h:inputText class="col-75" name="itemName" id="itemName" value="#{stockDetails.itemName}" 
+validatorMessage="Please Enter the Item Name in String Format " >
+<f:validateRegex pattern="^([a-zA-Z]+(.)?[\s]*)$" />
+</h:inputText>
+<h:message for="itemName" style="color:red;" />
+
+ <br/>
+Price :
+<h:inputText class="col-75" id="price" name="price" value="#{stockDetails.price}" 
+validatorMessage="Please Enter the Price in number Format " >
+<f:validateRegex pattern="\d*(.\d+)?"/></h:inputText> 
+<h:message for="price" style="color:red;" />
+<br/>
+                  
+Quantity Available :
+<h:inputText class="col-75" id="quantityAvail" name="quantityAvail" value="#{stockDetails.quantityAvail}" pattern="[0-9]"
+validatorMessage="Please Enter the Price in number Format " >
+<f:validateRegex pattern="\d*(.\d+)?"></f:validateRegex>
+</h:inputText>
+<h:message for="quantityAvail" style="color:red;" />
+ 
+<br/>
+<h:commandButton value="Add" class="btn btn-primary" action="#{stockDAO.updateStock(stockDetails)}"  />
+</h:form>
+</h:body>
+
+ 
+
+</html>
